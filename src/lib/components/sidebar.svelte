@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import { PanelLeftClose, PanelLeftOpen } from '@lucide/svelte';
 
 	let { collapsed = false, ontoggle } = $props();
@@ -72,7 +73,11 @@
 					<ul>
 						{#each group.items as item (item.path)}
 							<li>
-								<a href={item.path} class="nav-link">
+								<a
+									href={item.path}
+									class="nav-link"
+									class:active={$page.url.pathname === item.path}
+								>
 									{item.name}
 								</a>
 							</li>
@@ -202,8 +207,15 @@
 		text-decoration: none;
 	}
 
-	.nav-link:hover {
-		background: var(--primary);
-		color: #ffffff;
+	.nav-link.active {
+		color: var(--primary);
+		font-weight: 600;
+		box-shadow: inset 3px 0 0 0 var(--primary);
 	}
+
+	.nav-link:hover {
+		background: var(--surface-secondary);
+		color: var(--text);
+	}
+
 </style>

@@ -1,21 +1,35 @@
 import { writable } from 'svelte/store';
+import { DARK_THEMES, THEME_OPTIONS } from '$lib/preferences.js';
 
-export const themes = {
-	light: 'light',
-	dark: 'dark'
-};
+export const STORAGE_KEY = 'devtools-theme';
 
-export const theme = writable('light');
+const VALID_THEMES = new Set(THEME_OPTIONS.map((o) => o.value));
 
-if (typeof window !== 'undefined') {
-	const saved = localStorage.getItem('theme');
-	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	const initial = saved || (prefersDark ? 'dark' : 'light');
-	theme.set(initial);
-	document.documentElement.setAttribute('data-theme', initial);
-
-	theme.subscribe((value) => {
-		localStorage.setItem('theme', value);
-		document.documentElement.setAttribute('data-theme', value);
-	});
+function getInitialTheme() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored && VALID_THEMES.has(stored)) return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.classList.toggle('dark', DARK_THEMES.includes(theme));
+  localStorage.setItem(STORAGE_KEY, theme);
+}
+
+function createThemeStore() {
+  const initial = typeof window !== 'undefined' ? getInitialTheme() : 'light';
+  const { subscribe, set, update } = writable(initial);
+
+  if (typeof window !== 'undefined') {
+    applyTheme(initial);
+
+    subscribe((value) => {
+      applyTheme(value);
+    });
+  }
+
+  return { subscribe, set, update };
+}
+
+export const theme = createThemeStore();

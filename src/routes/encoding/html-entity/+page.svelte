@@ -248,7 +248,7 @@
 		font-size: 0.875rem;
 	}
 
-	[data-theme='dark'] .error-banner {
+	:global(html.dark) .error-banner {
 		background: rgba(239, 68, 68, 0.15);
 		color: #f87171;
 	}

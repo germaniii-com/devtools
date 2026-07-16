@@ -610,7 +610,7 @@
 		border-color: #22c55e;
 	}
 
-	:global([data-theme='dark']) .btn-copy.copied {
+	:global(html.dark) .btn-copy.copied {
 		color: #4ade80;
 		background: rgba(34, 197, 94, 0.15);
 		border-color: #4ade80;

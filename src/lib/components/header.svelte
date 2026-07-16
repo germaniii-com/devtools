@@ -1,9 +1,9 @@
 <script>
-	import { theme, themes } from '$lib/stores/theme.js';
-	import { Moon, Sun } from '@lucide/svelte';
+	import { theme } from '$lib/stores/theme.js';
+	import ThemeSelectorButton from './ThemeSelectorButton.svelte';
 
-	function toggleTheme() {
-		theme.update((t) => (t === themes.dark ? themes.light : themes.dark));
+	function handleSelect(value) {
+		theme.set(value);
 	}
 </script>
 
@@ -13,13 +13,7 @@
 			<h1 class="title">devtools.germaniii.com</h1>
 			<p class="subtitle">your all-in-one developer toolbox</p>
 		</div>
-		<button class="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
-			{#if $theme === themes.dark}
-				<Sun size={20} />
-			{:else}
-				<Moon size={20} />
-			{/if}
-		</button>
+		<ThemeSelectorButton theme={$theme} onSelect={handleSelect} />
 	</div>
 </header>
 
@@ -57,22 +51,6 @@
 		font-weight: 400;
 		margin: 0;
 		font-family: var(--font-family-sans);
-	}
-
-	.theme-toggle {
-		background: none;
-		border: none;
-		cursor: pointer;
-		padding: 0.5em;
-		border-radius: var(--radius);
-		color: var(--text);
-		transition: background-color 0.2s;
-		align-items: center;
-		justify-content: end;
-	}
-
-	.theme-toggle:hover {
-		background: var(--border);
 	}
 
 	@media (max-width: 768px) {
