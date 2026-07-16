@@ -4,7 +4,13 @@
 	import Sidebar from '$lib/components/sidebar.svelte';
 
 	let { children } = $props();
-	let collapsed = $state(true);
+	let collapsed = $state(typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('sidebar-collapsed') !== 'false' : true);
+
+	$effect(() => {
+		if (typeof sessionStorage !== 'undefined') {
+			sessionStorage.setItem('sidebar-collapsed', String(collapsed));
+		}
+	});
 </script>
 
 <svelte:head>
