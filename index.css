@@ -1,0 +1,550 @@
+@import "tailwindcss";
+@plugin "./heroui-plugin.js";
+@source "../../node_modules/@heroui/theme/dist/**/*.js";
+@source "../../node_modules/@heroui/react/dist/**/*.js";
+@source "../node_modules/@heroui/theme/dist/**/*.js";
+@source "../node_modules/@heroui/react/dist/**/*.js";
+@source "./pages/**/*.{tsx,ts}";
+@source "./components/**/*.{tsx,ts}";
+@source "./hooks/**/*.{tsx,ts}";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-family-sans: "Noto Sans", system-ui, sans-serif;
+  --color-surface: #f4f4f5;
+  --color-surface-secondary: #ffffff;
+  --color-background: #e4e4e7;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-border: #e4e4e7;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
+}
+
+/* Light */
+[data-theme="light"] {
+  --color-surface: #f4f4f5;
+  --color-surface-secondary: #ffffff;
+  --color-background: #e4e4e7;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-border: #e4e4e7;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #ec4899;
+}
+
+/* Dark */
+[data-theme="dark"] {
+  --color-surface: #09090b;
+  --color-surface-secondary: #18181b;
+  --color-background: #27272a;
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-border: #27272a;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-primary: #60a5fa;
+  --color-secondary: #a78bfa;
+  --color-accent: #f472b6;
+}
+
+/* Catppuccin Latte */
+[data-theme="catppuccin-latte"] {
+  --color-surface: #eff1f5;
+  --color-surface-secondary: #e6e9ef;
+  --color-background: #dce0e8;
+  --color-text: #4c4f69;
+  --color-text-muted: #6c6f85;
+  --color-border: #ccd0da;
+  --color-success: #40a02b;
+  --color-danger: #d20f39;
+  --color-primary: #1e66f5;
+  --color-secondary: #8839ef;
+  --color-accent: #ea76cb;
+}
+
+/* Catppuccin Frappé */
+[data-theme="catppuccin-frappe"] {
+  --color-surface: #303446;
+  --color-surface-secondary: #292c3c;
+  --color-background: #232634;
+  --color-text: #c6d0f5;
+  --color-text-muted: #a5adce;
+  --color-border: #414559;
+  --color-success: #a6d189;
+  --color-danger: #e78284;
+  --color-primary: #8caaee;
+  --color-secondary: #ca9ee6;
+  --color-accent: #f4b8e4;
+}
+
+/* Catppuccin Macchiato */
+[data-theme="catppuccin-macchiato"] {
+  --color-surface: #24273a;
+  --color-surface-secondary: #1e2030;
+  --color-background: #181926;
+  --color-text: #cad3f5;
+  --color-text-muted: #a5adcb;
+  --color-border: #363a4f;
+  --color-success: #a6da95;
+  --color-danger: #ed8796;
+  --color-primary: #8aadf4;
+  --color-secondary: #c6a0f6;
+  --color-accent: #f5bde6;
+}
+
+/* Catppuccin Mocha */
+[data-theme="catppuccin-mocha"] {
+  --color-surface: #1e1e2e;
+  --color-surface-secondary: #181825;
+  --color-background: #11111b;
+  --color-text: #cdd6f4;
+  --color-text-muted: #a6adc8;
+  --color-border: #313244;
+  --color-success: #a6e3a1;
+  --color-danger: #f38ba8;
+  --color-primary: #89b4fa;
+  --color-secondary: #cba6f7;
+  --color-accent: #f5c2e7;
+}
+
+/* Dracula */
+[data-theme="dracula"] {
+  --color-surface: #282a36;
+  --color-surface-secondary: #44475a;
+  --color-background: #21222c;
+  --color-text: #f8f8f2;
+  --color-text-muted: #6272a4;
+  --color-border: #44475a;
+  --color-success: #50fa7b;
+  --color-danger: #ff5555;
+  --color-primary: #bd93f9;
+  --color-secondary: #6272a4;
+  --color-accent: #ff79c6;
+}
+
+/* Nord */
+[data-theme="nord"] {
+  --color-surface: #2e3440;
+  --color-surface-secondary: #3b4252;
+  --color-background: #434c5e;
+  --color-text: #eceff4;
+  --color-text-muted: #81a1c1;
+  --color-border: #4c566a;
+  --color-success: #a3be8c;
+  --color-danger: #bf616a;
+  --color-primary: #88c0d0;
+  --color-secondary: #5e81ac;
+  --color-accent: #b48ead;
+}
+
+/* Solarized Light */
+[data-theme="solarized-light"] {
+  --color-surface: #fdf6e3;
+  --color-surface-secondary: #eee8d5;
+  --color-background: #eee8d5;
+  --color-text: #657b83;
+  --color-text-muted: #93a1a1;
+  --color-border: #d5cfa4;
+  --color-success: #859900;
+  --color-danger: #dc322f;
+  --color-primary: #268bd2;
+  --color-secondary: #6c71c4;
+  --color-accent: #cb4b16;
+}
+
+/* Solarized Dark */
+[data-theme="solarized-dark"] {
+  --color-surface: #002b36;
+  --color-surface-secondary: #073642;
+  --color-background: #073642;
+  --color-text: #839496;
+  --color-text-muted: #586e75;
+  --color-border: #073642;
+  --color-success: #859900;
+  --color-danger: #dc322f;
+  --color-primary: #268bd2;
+  --color-secondary: #6c71c4;
+  --color-accent: #cb4b16;
+}
+
+/* One Dark Pro */
+[data-theme="one-dark-pro"] {
+  --color-surface: #282c34;
+  --color-surface-secondary: #21252b;
+  --color-background: #181a1f;
+  --color-text: #abb2bf;
+  --color-text-muted: #5c6370;
+  --color-border: #3e4452;
+  --color-success: #98c379;
+  --color-danger: #e06c75;
+  --color-primary: #61afef;
+  --color-secondary: #c678dd;
+  --color-accent: #e5c07b;
+}
+
+/* GitHub Light */
+[data-theme="github-light"] {
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f6f8fa;
+  --color-background: #e8ecf0;
+  --color-text: #1f2328;
+  --color-text-muted: #656d76;
+  --color-border: #d0d7de;
+  --color-success: #1a7f37;
+  --color-danger: #cf222e;
+  --color-primary: #0969da;
+  --color-secondary: #8250df;
+  --color-accent: #cf222e;
+}
+
+/* GitHub Dark */
+[data-theme="github-dark"] {
+  --color-surface: #0d1117;
+  --color-surface-secondary: #161b22;
+  --color-background: #21262d;
+  --color-text: #e6edf3;
+  --color-text-muted: #8b949e;
+  --color-border: #30363d;
+  --color-success: #3fb950;
+  --color-danger: #f85149;
+  --color-primary: #58a6ff;
+  --color-secondary: #bc8cff;
+  --color-accent: #f85149;
+}
+
+/* Gruvbox Dark */
+[data-theme="gruvbox-dark"] {
+  --color-surface: #282828;
+  --color-surface-secondary: #3c3836;
+  --color-background: #1d2021;
+  --color-text: #ebdbb2;
+  --color-text-muted: #a89984;
+  --color-border: #504945;
+  --color-success: #b8bb26;
+  --color-danger: #fb4934;
+  --color-primary: #83a598;
+  --color-secondary: #d3869b;
+  --color-accent: #fb4934;
+}
+
+/* Gruvbox Light */
+[data-theme="gruvbox-light"] {
+  --color-surface: #fbf1c7;
+  --color-surface-secondary: #f2e5bc;
+  --color-background: #ebdbb2;
+  --color-text: #3c3836;
+  --color-text-muted: #7c6f64;
+  --color-border: #d5c4a1;
+  --color-success: #98971a;
+  --color-danger: #cc241d;
+  --color-primary: #458588;
+  --color-secondary: #b16286;
+  --color-accent: #cc241d;
+}
+
+/* Tokyo Night */
+[data-theme="tokyo-night"] {
+  --color-surface: #1a1b26;
+  --color-surface-secondary: #16161e;
+  --color-background: #13141c;
+  --color-text: #c0caf5;
+  --color-text-muted: #565f89;
+  --color-border: #292e42;
+  --color-success: #9ece6a;
+  --color-danger: #f7768e;
+  --color-primary: #7aa2f7;
+  --color-secondary: #bb9af7;
+  --color-accent: #f7768e;
+}
+
+/* Monokai */
+[data-theme="monokai"] {
+  --color-surface: #272822;
+  --color-surface-secondary: #1e1f1c;
+  --color-background: #1a1b15;
+  --color-text: #f8f8f2;
+  --color-text-muted: #75715e;
+  --color-border: #3e3d32;
+  --color-success: #a6e22e;
+  --color-danger: #f92672;
+  --color-primary: #66d9ef;
+  --color-secondary: #ae81ff;
+  --color-accent: #f92672;
+}
+
+/* Ayu Dark */
+[data-theme="ayu-dark"] {
+  --color-surface: #0b0e14;
+  --color-surface-secondary: #11151c;
+  --color-background: #0a0d13;
+  --color-text: #bfbdb6;
+  --color-text-muted: #5c6773;
+  --color-border: #1c2128;
+  --color-success: #7fd962;
+  --color-danger: #f07178;
+  --color-primary: #73b8ff;
+  --color-secondary: #d4a0ff;
+  --color-accent: #f07178;
+}
+
+/* Ayu Light */
+[data-theme="ayu-light"] {
+  --color-surface: #fafafa;
+  --color-surface-secondary: #f3f4f5;
+  --color-background: #ededed;
+  --color-text: #5c6166;
+  --color-text-muted: #8a9199;
+  --color-border: #e0e0e0;
+  --color-success: #6cbf43;
+  --color-danger: #e65050;
+  --color-primary: #4da0e6;
+  --color-secondary: #a07dd4;
+  --color-accent: #e65050;
+}
+
+/* Everforest Dark */
+[data-theme="everforest-dark"] {
+  --color-surface: #2d353b;
+  --color-surface-secondary: #232a2e;
+  --color-background: #1e2326;
+  --color-text: #d3c6aa;
+  --color-text-muted: #859289;
+  --color-border: #475258;
+  --color-success: #a7c080;
+  --color-danger: #e67e80;
+  --color-primary: #7fbbb3;
+  --color-secondary: #83c092;
+  --color-accent: #e67e80;
+}
+
+/* Everforest Light */
+[data-theme="everforest-light"] {
+  --color-surface: #fdf6e3;
+  --color-surface-secondary: #f3ead3;
+  --color-background: #e8dfc0;
+  --color-text: #5c6a72;
+  --color-text-muted: #939f91;
+  --color-border: #d8d3ba;
+  --color-success: #8da101;
+  --color-danger: #f85552;
+  --color-primary: #5a9fd4;
+  --color-secondary: #a07dd4;
+  --color-accent: #f85552;
+}
+
+/* Kanagawa */
+[data-theme="kanagawa"] {
+  --color-surface: #1f1f28;
+  --color-surface-secondary: #16161d;
+  --color-background: #13131a;
+  --color-text: #dcd7ba;
+  --color-text-muted: #727169;
+  --color-border: #2a2a37;
+  --color-success: #76946a;
+  --color-danger: #c34043;
+  --color-primary: #7e9cd8;
+  --color-secondary: #957fb8;
+  --color-accent: #c34043;
+}
+
+/* Rose Pine */
+[data-theme="rose-pine"] {
+  --color-surface: #191724;
+  --color-surface-secondary: #1f1d2e;
+  --color-background: #131220;
+  --color-text: #e0def4;
+  --color-text-muted: #6e6a86;
+  --color-border: #26233a;
+  --color-success: #9ccfd8;
+  --color-danger: #eb6f92;
+  --color-primary: #c4a7e7;
+  --color-secondary: #31748f;
+  --color-accent: #eb6f92;
+}
+
+/* Rose Pine Dawn */
+[data-theme="rose-pine-dawn"] {
+  --color-surface: #faf4ed;
+  --color-surface-secondary: #fffaf3;
+  --color-background: #f2e9de;
+  --color-text: #575279;
+  --color-text-muted: #9893a5;
+  --color-border: #dfdad9;
+  --color-success: #56949f;
+  --color-danger: #b4637a;
+  --color-primary: #907aa9;
+  --color-secondary: #286983;
+  --color-accent: #b4637a;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@utility animate-fade-in-up {
+  animation: fadeInUp 0.35s ease-out;
+}
+
+@utility animate-scale-in {
+  animation: scaleIn 0.25s ease-out;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@utility animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+@utility animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+@utility animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+@utility animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+@utility animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+@utility animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+@utility animate-fill-both {
+  animation-fill-mode: both;
+}
+
+@utility card-hover {
+  transition: all 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+  .dark &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: var(--color-text);
+}
+
+.recharts-legend-item-text {
+  color: var(--color-text) !important;
+}
+
+.recharts-default-tooltip {
+  background-color: var(--color-surface-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--color-text) !important;
+}
+
+.recharts-tooltip-item {
+  color: var(--color-text-muted) !important;
+}
+
+.recharts-pie-labels text {
+  fill: var(--color-text);
+}
+
+.recharts-cartesian-grid line {
+  stroke: var(--color-border);
+}
+
+/* HeroUI table theming */
+.app-table-wrapper {
+  background-color: var(--color-surface-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+  box-shadow: none !important;
+}
+.app-table-wrapper th {
+  background-color: var(--color-background) !important;
+  color: var(--color-text-muted) !important;
+}
+
+
+@utility safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility safe-left {
+  padding-left: env(safe-area-inset-left);
+}
+@utility safe-right {
+  padding-right: env(safe-area-inset-right);
+}

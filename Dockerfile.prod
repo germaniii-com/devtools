@@ -32,10 +32,11 @@ RUN setcap 'cap_net_bind_service=+ep' /usr/local/bin/node
 # Safely switch to the unprivileged node user
 USER node
 
-# Configure environment variables for Port 80
+# Configure runtime environment variables.
+# PORT is intentionally NOT baked in here so it can be set at runtime
+# (e.g. `docker run -e PORT=8080 ...`). adapter-node defaults to 3000 when unset.
 ENV NODE_ENV=production
-ENV PORT=80
-EXPOSE 80
+EXPOSE 3000
 
 # Execute the entrypoint
 CMD ["node", "build/index.js"]

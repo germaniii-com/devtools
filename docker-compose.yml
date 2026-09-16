@@ -3,12 +3,13 @@ services:
     container_name: devtools.germaniii.com
     build:
       context: ./
-      dockerfile: ./Dockerfile
-      target: base
-    tty: true
+      dockerfile: ./Dockerfile.prod
     restart: always
-    volumes:
-      - ./:/app
-      - ./node_modules:/app/node_modules
-    ports:
-      - 3000:3000
+    # The app binds to PORT. Set it here (or override at runtime with
+    # `PORT=9000 docker compose up`). adapter-node defaults to 3000 if unset.
+    environment:
+      - PORT=${PORT:-8052}
+    # Internal-only port: reachable by other containers on this network
+    # (e.g. a reverse proxy). This does NOT publish to the host.
+    expose:
+      - "${PORT:-8052}"
